@@ -21,6 +21,7 @@ import cv2
 import numpy as np
 import traceback
 
+from spv.preprocess.vectorize import vectorize_img
 from spv.inference.yolo_detector import YoloDetector
 from spv.inference.draw import draw_boxes
 from spv.preprocess.preprocess_utils import adaptive_preprocess   # returns (img, applied_steps)          # returns img
@@ -188,7 +189,7 @@ def predict_action():
         return
 
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
-    h = int(cap.get(CAP_PROP_FRAME_HEIGHT))
+    h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     fps = cap.get(cv2.CAP_PROP_FPS)
 
     out_video_path = os.path.join(out_dir, "prediction.mp4")
